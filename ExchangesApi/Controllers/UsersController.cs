@@ -44,7 +44,7 @@ public class UsersController : ControllerBase
                 changeBalanceModel.Currency
             );
 
-            return this.ErrorToActionResult(result);
+            return this.ErrorToActionResult(result, changed => new { changed });
         }
         catch (Exception ex)
         {
@@ -52,7 +52,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpGet("{userName}/accounts")]
+    [HttpGet("accounts/{userName}")]
     public async Task<IActionResult> GetUserAccounts(string userName)
     {
         try

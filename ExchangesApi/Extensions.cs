@@ -16,11 +16,11 @@ internal static class Extensions
             case ErrorType.UserNotFound:
                 return controller.NotFound(new { error = "The user does not exist." });
             case ErrorType.UserAlreadyExists:
-                return controller.Ok(new { error = "The user already exist." });
+                return controller.BadRequest(new { error = "The user already exist." });
             case ErrorType.AccountNotFound:
-                return controller.Ok(new { error = "The user does not have the specified account." });
+                return controller.BadRequest(new { error = "The user does not have the specified account." });
             case ErrorType.InsufficientFunds:
-                return controller.Ok(new { error = "No enough money on the user's account." });
+                return controller.BadRequest(new { error = "No enough money on the user's account." });
             case ErrorType.UnknownError:
             default:
                 return controller.StatusCode(500);

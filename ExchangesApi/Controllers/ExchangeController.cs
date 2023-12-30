@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ExchangesApi.Controllers;
 
 [ApiController]
-[Route("api/exchange")]
+[Route("api/exchanges")]
 public class ExchangeController : ControllerBase
 {
     private readonly IUsersService _userService;
@@ -26,7 +26,7 @@ public class ExchangeController : ControllerBase
         try
         {
             var result = await _userService.ConvertBalanceAsync(convertModel);
-            return this.ErrorToActionResult(result);
+            return this.ErrorToActionResult(result, converted => new { converted });
         }
         catch (Exception ex)
         {
