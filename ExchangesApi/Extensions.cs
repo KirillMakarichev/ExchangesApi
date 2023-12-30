@@ -17,6 +17,8 @@ internal static class Extensions
                 return controller.NotFound(new { error = "The user does not exist." });
             case ErrorType.UserAlreadyExists:
                 return controller.BadRequest(new { error = "The user already exist." });
+            case ErrorType.CurrencyAlreadyExists:
+                return controller.BadRequest(new { error = "The currency code already exist." });
             case ErrorType.AccountNotFound:
                 return controller.BadRequest(new { error = "The user does not have the specified account." });
             case ErrorType.InsufficientFunds:
